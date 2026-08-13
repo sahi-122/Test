@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh 'docker build -t jenkins-demo .'
+                bat 'docker build -t jenkins-demo .'
             }
         }
 
@@ -20,9 +20,9 @@ pipeline {
             steps {
                 echo 'Starting application...'
 
-                sh '''
-                    docker stop jenkins-demo || true
-                    docker rm jenkins-demo || true
+                bat '''
+                    docker stop jenkins-demo || exit /b 0
+                    docker rm jenkins-demo || exit /b 0
                     docker run -d --name jenkins-demo -p 8080:80 jenkins-demo
                 '''
             }
