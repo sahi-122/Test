@@ -23,7 +23,7 @@ pipeline {
                 bat '''
                     docker stop jenkins-demo || exit /b 0
                     docker rm jenkins-demo || exit /b 0
-                    docker run -d --name jenkins-demo -p 8081:80 jenkins-demo
+                    docker run -d --name jenkins-demo -p 8082:80 jenkins-demo
                 '''
             }
         }
