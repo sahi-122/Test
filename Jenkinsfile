@@ -19,10 +19,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Starting application...'
-
                 bat '''
-                    docker stop jenkins-demo || exit /b 0
-                    docker rm jenkins-demo || exit /b 0
+                    docker stop jenkins-demo 2>nul
+                    docker rm jenkins-demo 2>nul
                     docker run -d --name jenkins-demo -p 8082:80 jenkins-demo
                 '''
             }
